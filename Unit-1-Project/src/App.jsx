@@ -1,120 +1,25 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import EffortsDashboard from './components/EffortsDashboard'
 import AddNewEffort from './components/AddNewEffort'
 import './App.css'
 
-const effortsArray = [
-  {
-    id: 1,
-    title: 'U-City Clean Up',
-    time: {
-      date: 'May 21, 2025',
-      startTime: '10:00 am',
-      endTime: null
-    },
-    location: {
-      address: '1234 Address Street',
-      city: 'Saint Louis',
-      state: 'Missouri',
-      zip: 63108
-    },
-    description: 'An effort to help clean debris from the streets and neighborhoods of U-City.',
-    volunteersNeeded: true,
-    openEffort: false,
-    volunteerCount: 12,
-    tags: []
-  },
-  {
-    id: 2,
-    title: 'Food Box Packing - North STL',
-    time: {
-      date: 'May 22, 2025',
-      startTime: '9:00 am',
-      endTime: '1:00 pm'
-    },
-    location: {
-      address: '5678 Relief Drive',
-      city: 'Saint Louis',
-      state: 'Missouri',
-      zip: 63106
-    },
-    description: 'Volunteers needed to assemble and sort food supply boxes for families affected by the tornado.',
-    volunteersNeeded: true,
-    openEffort: true,
-    volunteerCount: 5,
-    tags: []
-  },
-  {
-    id: 3,
-    title: 'Crisis Housing Prep',
-    time: {
-      date: 'May 23, 2025',
-      startTime: '12:00 pm',
-      endTime: '5:00 pm'
-    },
-    location: {
-      address: '1428 Shelter Lane',
-      city: 'Ferguson',
-      state: 'Missouri',
-      zip: 63074
-    },
-    description: 'Setting up beds, cleaning shelter space, and organizing supplies for incoming displaced families.',
-    volunteersNeeded: true,
-    openEffort: true,
-    volunteerCount: 10,
-    tags: []
-  },
-  {
-    id: 4,
-    title: 'Furniture Transport Team',
-    time: {
-      date: 'May 24, 2025',
-      startTime: '8:00 am',
-      endTime: '11:30 am'
-    },
-    location: {
-      address: '900 Warehouse Blvd',
-      city: 'Chesterfield',
-      state: 'Missouri',
-      zip: 63044
-    },
-    description: 'Help needed to load and transport donated furniture to transitional housing units.',
-    volunteersNeeded: true,
-    openEffort: false,
-    volunteerCount: 3,
-    tags: []
-  },
-  {
-    id: 5,
-    title: 'Neighborhood Safety Check',
-    time: {
-      date: 'May 25, 2025',
-      startTime: '4:00 pm',
-      endTime: '7:00 pm'
-    },
-    location: {
-      address: '3100 Pine Street',
-      city: 'Saint Louis',
-      state: 'Missouri',
-      zip: 63103
-    },
-    description: 'Door-to-door wellness checks and resource distribution for impacted residents.',
-    volunteersNeeded: false,
-    openEffort: true,
-    volunteerCount: 1,
-    tags: []
-  }
-]
-
-
 function App() {
+
+  const [efforts, setEfforts] = useState([]);
+
+  useEffect(() => {
+    fetch('/mockEfforts.json')
+      .then((res) => res.json())
+      .then((data) => setEfforts(data))
+      .catch((error) => console.error('Failed to load efforts:', error));
+  }, []);
 
   return (
     <>
       <Router>
         <Routes>
-          <Route path='/' element={<EffortsDashboard efforts={effortsArray} />} />
+          <Route path='/' element={<EffortsDashboard efforts={efforts} />} />
           <Route path='/newEffort' element={<AddNewEffort />} />
         </Routes>
       </Router >
