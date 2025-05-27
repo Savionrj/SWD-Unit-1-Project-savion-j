@@ -22,7 +22,8 @@ const effortsArray = [
     description: 'An effort to help clean debris from the streets and neighborhoods of U-City.',
     volunteersNeeded: true,
     openEffort: false,
-    volunteerCount: 12
+    volunteerCount: 12,
+    tags: []
   },
   {
     id: 2,
@@ -41,7 +42,8 @@ const effortsArray = [
     description: 'Volunteers needed to assemble and sort food supply boxes for families affected by the tornado.',
     volunteersNeeded: true,
     openEffort: true,
-    volunteerCount: 5
+    volunteerCount: 5,
+    tags: []
   },
   {
     id: 3,
@@ -60,7 +62,8 @@ const effortsArray = [
     description: 'Setting up beds, cleaning shelter space, and organizing supplies for incoming displaced families.',
     volunteersNeeded: true,
     openEffort: true,
-    volunteerCount: 10
+    volunteerCount: 10,
+    tags: []
   },
   {
     id: 4,
@@ -79,7 +82,8 @@ const effortsArray = [
     description: 'Help needed to load and transport donated furniture to transitional housing units.',
     volunteersNeeded: true,
     openEffort: false,
-    volunteerCount: 3
+    volunteerCount: 3,
+    tags: []
   },
   {
     id: 5,
@@ -98,7 +102,8 @@ const effortsArray = [
     description: 'Door-to-door wellness checks and resource distribution for impacted residents.',
     volunteersNeeded: false,
     openEffort: true,
-    volunteerCount: 1
+    volunteerCount: 1,
+    tags: []
   }
 ]
 
