@@ -1,16 +1,19 @@
 import EffortsCard from './EffortsCard'
+import { Link } from 'react-router-dom'
 
-export default function EffortsDashboard() {
+export default function EffortsDashboard({ efforts }) {
   return (
     <div>
-      <div id='button row'>
-        <button>Add New Effort</button>
-        <div id='diplay-toggle-menu'>
-          <button className='display-toggle-button'></button>
-          <button className='display-toggle-button'></button>
+      <div className='row'>
+        <Link to='/newEffort' className='button'>Add New Effort</Link>
+        <div className='display-toggle-menu'>
+          <button className='display-toggle-button'>Card View</button>
+          <button className='display-toggle-button'>List View</button>
         </div>
       </div>
-      <EffortsCard />
+      {efforts.map((effort) =>
+        <EffortsCard key={effort.id} effort={effort} />
+      )}
     </div>
   );
 }
