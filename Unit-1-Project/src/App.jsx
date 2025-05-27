@@ -10,7 +10,7 @@ function App() {
 
   useEffect(() => {
     fetch('/mockEfforts.json')
-      .then((res) => res.json())
+      .then((response) => response.json())
       .then((data) => setEfforts(data))
       .catch((error) => console.error('Failed to load efforts:', error));
   }, []);
@@ -20,7 +20,7 @@ function App() {
       <Router>
         <Routes>
           <Route path='/' element={<EffortsDashboard efforts={efforts} />} />
-          <Route path='/newEffort' element={<AddNewEffort />} />
+          <Route path='/newEffort' element={<AddNewEffort efforts={efforts} setEfforts={setEfforts} />} />
         </Routes>
       </Router >
     </>

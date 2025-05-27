@@ -1,61 +1,173 @@
-export default function AddEffortForm() {
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import parseLocation from '../parseLocation';
+
+export default function AddEffortForm({ efforts, setEfforts }) {
+  const nav = useNavigate();
+
+  const [formData, setFormData] = useState({
+    title: '',
+    date: '',
+    startTime: '',
+    endTime: '',
+    location: '',
+    description: '',
+    volunteersNeeded: false,
+    openEffort: false,
+    volunteerCount: 0,
+    tags: ''
+  });
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: type === 'checkbox' ? checked : value
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const parsedLocation = parseLocation(formData.location);
+    if (!parsedLocation) {
+      alert('Please use the format: Address, City, State ZIP');
+      return;
+    }
+
+    const newEffort = {
+      id: efforts.length + 1,
+      title: formData.title,
+      time: {
+        date: formData.date,
+        startTime: formData.startTime,
+        endTime: formData.endTime || null
+      },
+      location: {
+        address: parsedLocation.address,
+        city: parsedLocation.city,
+        state: parsedLocation.state,
+        zip: parsedLocation.zip
+      },
+      description: formData.description,
+      volunteersNeeded: formData.volunteersNeeded,
+      openEffort: formData.openEffort,
+      volunteerCount: 0,
+      tags: formData.tags ? formData.tags.split(',').map(tag => tag.trim()) : []
+    };
+
+    setEfforts([...efforts, newEffort]);
+    nav('/');
+  };
+
   return (
 
     <div className="add-effort-form">
       <h1 className='text-left'>Add New Effort</h1>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="form-left">
           <label>
             Effort Title:
-            <input type="text" name="title" required />
+            <input
+              type="text"
+              name="title"
+              value={formData.title}
+              onChange={handleChange}
+              required
+            />
           </label>
 
           <label>
             Date:
-            <input type="date" name="date" required />
+            <input
+              type="date"
+              name="date"
+              value={formData.date}
+              onChange={handleChange}
+              required
+            />
           </label>
 
           <div className="time-fields">
             <label>
               Start Time:
-              <input type="time" name="startTime" className='time-input' />
+              <input
+                type="time"
+                name="startTime"
+                className="time-input"
+                value={formData.startTime}
+                onChange={handleChange}
+              />
             </label>
             <label>
               End Time:
-              <input type="time" name="endTime" className='time-input' />
+              <input
+                type="time"
+                name="endTime"
+                className="time-input"
+                value={formData.endTime}
+                onChange={handleChange}
+              />
             </label>
           </div>
 
           <label>
             Location:
-            <input type="text" name="location" />
+            <input
+              type="text"
+              name="location"
+              value={formData.location}
+              onChange={handleChange}
+              placeholder="e.g., 123 Main St, City, State 12345"
+            />
           </label>
 
           <label>
             Description:
-            <textarea name="description" rows="4" />
+            <textarea
+              name="description"
+              rows="4"
+              value={formData.description}
+              onChange={handleChange}
+            />
           </label>
         </div>
 
         <div className="form-right">
           <label>Volunteers Needed?
             <div className="signup-check">
-              <input type="checkbox" name="volunteersNeeded" />
+              <input
+                type="checkbox"
+                name="volunteersNeeded"
+                checked={formData.volunteersNeeded}
+                onChange={handleChange}
+              />
               <small>Allow Volunteer Sign-up</small>
             </div>
           </label>
 
           <label>Is This An Open Effort?
             <div className="signup-check">
-              <input type="checkbox" name="openEffort" />
+              <input
+                type="checkbox"
+                name="openEffort"
+                checked={formData.openEffort}
+                onChange={handleChange}
+              />
               <small>Allow Reliant Sign-up</small>
             </div>
           </label>
 
           <label>
             Additional Tags:
-            <textarea name="tags" rows="15" />
+            <textarea
+              name="tags"
+              rows="15"
+              value={formData.tags}
+              onChange={handleChange}
+            />
           </label>
+
           <button type="submit" className="submit-button">Submit Effort</button>
         </div>
       </form>

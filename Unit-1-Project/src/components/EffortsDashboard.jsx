@@ -9,7 +9,7 @@ export default function EffortsDashboard({ efforts }) {
   const filteredEfforts = efforts.filter((effort) => {
     return (
       effort.title.toLowerCase().includes(search.toLowerCase()) ||
-      effort.location.address.toLowerCase().includes(search.toLowerCase())
+      effort.location.city.toLowerCase().includes(search.toLowerCase())
     );
   });
 
