@@ -205,3 +205,37 @@ textarea {
   border-radius: 6px;
   border: none;
 }
+
+/* List View Display */
+
+.effort-card.list-view {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #ddd;
+  background: #f9f9f9;
+  font-size: 0.9rem;
+}
+
+.list-summary h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.list-summary span {
+  display: inline-block;
+  margin-right: 1rem;
+  color: #555;
+}
+
+.list-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.signup-button.small {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.8rem;
+}

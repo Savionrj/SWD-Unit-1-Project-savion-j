@@ -5,6 +5,7 @@ import { useState } from 'react'
 
 export default function EffortsDashboard({ efforts }) {
   const [search, setSearch] = useState('');
+  const [displayMode, setDisplayMode] = useState('card');
 
   const filteredEfforts = efforts.filter((effort) => {
     return (
@@ -20,13 +21,13 @@ export default function EffortsDashboard({ efforts }) {
       <div className='row'>
         <Link to='/newEffort' className='button'>Add New Effort</Link>
         <div className='display-toggle-menu'>
-          <button className='display-toggle-button'>Card View</button>
-          <button className='display-toggle-button'>List View</button>
+          <button className='display-toggle-button' onClick={() => setDisplayMode('card')}>Card View</button>
+          <button className='display-toggle-button' onClick={() => setDisplayMode('list')}>List View</button>
         </div>
       </div>
 
       {filteredEfforts.map((effort) =>
-        <EffortsCard key={effort.id} effort={effort} />
+        <EffortsCard key={effort.id} effort={effort} displayMode={displayMode} />
       )}
     </div>
   );

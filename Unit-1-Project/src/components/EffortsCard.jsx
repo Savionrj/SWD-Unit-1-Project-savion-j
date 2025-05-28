@@ -1,6 +1,22 @@
 import volunteerImage from '../images/volunteer.jpg';
 
-export default function EffortsCard({ effort }) {
+export default function EffortsCard({ effort, displayMode }) {
+  if (displayMode === 'list') {
+    return (
+      <div className="effort-card list-view">
+        <div className="list-summary">
+          <h3>{effort.title}</h3>
+          <span>{effort.time.date} @ {effort.time.startTime}</span>
+          <span>• {effort.location.city}, {effort.location.state}</span>
+        </div>
+        <div className="list-actions">
+          <span>{effort.volunteerCount} {effort.volunteerCount === 1 ? 'volunteer' : 'volunteers'}</span>
+          <button className="signup-button small">Volunteer</button>
+          <button className="signup-button small">Reliant</button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="effort-card">
