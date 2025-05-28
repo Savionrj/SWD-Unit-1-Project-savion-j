@@ -12,6 +12,9 @@ export default function EffortsCard({ effort, displayMode }) {
         <div className="list-actions">
           <span>{effort.volunteerCount} {effort.volunteerCount === 1 ? 'volunteer' : 'volunteers'}</span>
           <button className="signup-button small">Volunteer</button>
+          {effort.openEffort && (
+            <button className="signup-button small">Reliant</button>
+          )}
           <button className="signup-button small">Reliant</button>
         </div>
       </div>
@@ -31,7 +34,8 @@ export default function EffortsCard({ effort, displayMode }) {
         <h1>Sign Up</h1>
         <button className='signup-button'>As Volunteer</button>
         <p className='volunteer-count'>{effort.volunteerCount} {effort.volunteerCount > 1 ? 'volunteers already' : 'volunteer already'}</p>
-        <button className='signup-button'>As Reliant</button>
+        {effort.openEffort && (
+          <button className='signup-button'>As Reliant</button>)}
       </div>
     </div>
   );

@@ -12,7 +12,7 @@ export default function AddEffortForm({ efforts, setEfforts }) {
     endTime: '',
     location: '',
     description: '',
-    volunteersNeeded: false,
+    volunteersNeeded: true,
     openEffort: false,
     volunteerCount: 0,
     tags: ''
@@ -50,7 +50,6 @@ export default function AddEffortForm({ efforts, setEfforts }) {
         zip: parsedLocation.zip
       },
       description: formData.description,
-      volunteersNeeded: formData.volunteersNeeded,
       openEffort: formData.openEffort,
       volunteerCount: 0,
       tags: formData.tags ? formData.tags.split(',').map(tag => tag.trim()) : []
@@ -134,17 +133,6 @@ export default function AddEffortForm({ efforts, setEfforts }) {
         </div>
 
         <div className="form-right">
-          <label>Volunteers Needed?
-            <div className="signup-check">
-              <input
-                type="checkbox"
-                name="volunteersNeeded"
-                checked={formData.volunteersNeeded}
-                onChange={handleChange}
-              />
-              <small>Allow Volunteer Sign-up</small>
-            </div>
-          </label>
 
           <label>Is This An Open Effort?
             <div className="signup-check">
