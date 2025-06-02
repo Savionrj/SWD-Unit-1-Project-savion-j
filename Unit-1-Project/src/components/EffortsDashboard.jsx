@@ -3,9 +3,19 @@ import Header from './Header'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 
-export default function EffortsDashboard({ efforts }) {
+export default function EffortsDashboard({ efforts, setEfforts }) {
   const [search, setSearch] = useState('');
   const [displayMode, setDisplayMode] = useState('card');
+
+  const handleVolunteerSignup = (id) => {
+    setEfforts((prevEfforts) =>
+      prevEfforts.map((effort) =>
+        effort.id === id
+          ? { ...effort, volunteerCount: effort.volunteerCount + 1 }
+          : effort
+      )
+    );
+  };
 
   const filteredEfforts = efforts.filter((effort) => {
     return (
@@ -27,7 +37,9 @@ export default function EffortsDashboard({ efforts }) {
       </div>
 
       {filteredEfforts.map((effort) =>
-        <EffortsCard key={effort.id} effort={effort} displayMode={displayMode} />
+        <EffortsCard key={effort.id} effort={effort}
+          displayMode={displayMode}
+          onVolunteerSignup={handleVolunteerSignup} />
       )}
     </div>
   );

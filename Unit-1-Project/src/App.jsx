@@ -19,7 +19,7 @@ function App() {
     <>
       <Router>
         <Routes>
-          <Route path='/' element={<EffortsDashboard efforts={efforts} />} />
+          <Route path='/' element={<EffortsDashboard efforts={efforts} setEfforts={setEfforts} />} />
           <Route path='/newEffort' element={<AddNewEffort efforts={efforts} setEfforts={setEfforts} />} />
         </Routes>
       </Router >

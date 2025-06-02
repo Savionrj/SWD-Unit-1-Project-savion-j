@@ -1,6 +1,12 @@
 import volunteerImage from '../images/volunteer.jpg';
 
-export default function EffortsCard({ effort, displayMode }) {
+export default function EffortsCard({ effort, displayMode, onVolunteerSignup }) {
+
+
+  const handleClick = () => {
+    onVolunteerSignup(effort.id);
+  };
+
   if (displayMode === 'list') {
     return (
       <div className="effort-card list-view">
@@ -11,7 +17,7 @@ export default function EffortsCard({ effort, displayMode }) {
         </div>
         <div className="list-actions">
           <span>{effort.volunteerCount} {effort.volunteerCount === 1 ? 'volunteer' : 'volunteers'}</span>
-          <button className="signup-button small">Volunteer</button>
+          <button className="signup-button small" onClick={handleClick}>Volunteer</button>
           {effort.openEffort && (
             <button className="signup-button small">Reliant</button>
           )}
@@ -32,7 +38,7 @@ export default function EffortsCard({ effort, displayMode }) {
       </div>
       <div className='effort-card-signup'>
         <h1>Sign Up</h1>
-        <button className='signup-button'>As Volunteer</button>
+        <button className='signup-button' onClick={handleClick}>As Volunteer</button>
         <p className='volunteer-count'>{effort.volunteerCount} {effort.volunteerCount > 1 ? 'volunteers already' : 'volunteer already'}</p>
         {effort.openEffort && (
           <button className='signup-button'>As Reliant</button>)}
