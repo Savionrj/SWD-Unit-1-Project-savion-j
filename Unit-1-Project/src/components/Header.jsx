@@ -1,17 +1,14 @@
 import { Link } from 'react-router-dom';
+import NavMenu from './NavMenu';
 
-export default function Header({ search, setSearch }) {
+
+export default function Header() {
   return (
     <header className="header">
       <Link to="/" className="home-link">Volunteer STL</Link>
 
-      <input
-        type="text"
-        placeholder="Search efforts..."
-        className="search-bar"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
+      <NavMenu />
+
     </header>
   );
 }

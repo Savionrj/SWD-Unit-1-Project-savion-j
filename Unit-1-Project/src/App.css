@@ -197,7 +197,7 @@ textarea {
   font-size: 2rem;
   font-weight: bold;
   color: white;
-  flex: 2;
+  flex: 1;
 }
 
 .search-bar {
@@ -205,7 +205,7 @@ textarea {
   font-size: 1rem;
   border-radius: 6px;
   border: none;
-  flex: 1;
+  margin-bottom: 1rem;
 }
 
 /* List View Display */
@@ -240,4 +240,22 @@ textarea {
 .signup-button.small {
   padding: 0.25rem 0.5rem;
   font-size: 0.8rem;
+}
+
+/* Nav Menu */
+
+.main-nav {
+  display: flex;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  font-size: 1.3rem;
+  margin: auto 1rem;
+}
+
+.nav-link:hover {
+  color: #0077cc;
 }

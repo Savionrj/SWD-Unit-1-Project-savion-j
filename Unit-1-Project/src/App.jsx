@@ -2,6 +2,9 @@ import { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import EffortsDashboard from './components/EffortsDashboard'
 import AddNewEffort from './components/AddNewEffort'
+import UpcomingEfforts from './components/UpcomingEfforts'
+import MyEfforts from './components/MyEfforts'
+import About from './components/About'
 import './App.css'
 
 function App() {
@@ -21,6 +24,9 @@ function App() {
         <Routes>
           <Route path='/' element={<EffortsDashboard efforts={efforts} setEfforts={setEfforts} />} />
           <Route path='/newEffort' element={<AddNewEffort efforts={efforts} setEfforts={setEfforts} />} />
+          <Route path="/upcoming" element={<UpcomingEfforts />} />
+          <Route path="/my-efforts" element={<MyEfforts />} />
+          <Route path="/about" element={<About />} />
         </Routes>
       </Router >
     </>

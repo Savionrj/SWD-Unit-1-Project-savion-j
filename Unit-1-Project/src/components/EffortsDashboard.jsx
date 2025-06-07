@@ -2,6 +2,7 @@ import EffortsCard from './EffortsCard'
 import Header from './Header'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
+import SearchBar from './SearchBar';
 
 export default function EffortsDashboard({ efforts, setEfforts }) {
   const [search, setSearch] = useState('');
@@ -26,7 +27,9 @@ export default function EffortsDashboard({ efforts, setEfforts }) {
 
   return (
     <div>
-      <Header search={search} setSearch={setSearch} />
+      <Header />
+
+      <SearchBar search={search} setSearch={setSearch} />
 
       <div className='row'>
         <Link to='/newEffort' className='button'>Add New Effort</Link>
