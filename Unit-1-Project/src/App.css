@@ -259,3 +259,96 @@ textarea {
 .nav-link:hover {
   color: #0077cc;
 }
+
+/* My Efforts */
+
+.myEfforts-text {
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: #333;
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (max-width: 1024px) {
+  .effort-card {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .effort-card-info,
+  .effort-card-signup {
+    width: 100%;
+    margin: 1rem 0;
+    border-left: none;
+    padding-left: 0;
+  }
+
+  .display-toggle-menu {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .form-left,
+  .form-right {
+    min-width: 100%;
+  }
+
+  .list-summary span {
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+}
+
+/* Small devices (phones, 600px and down) */
+@media (max-width: 600px) {
+  #root {
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 1.2rem;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .home-link {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .main-nav {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .nav-link {
+    font-size: 1.1rem;
+    margin: 0;
+  }
+
+  .signup-button,
+  .submit-button {
+    width: 100%;
+  }
+
+  .effort-card.list-view {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .list-actions {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .list-summary h3 {
+    font-size: 1rem;
+  }
+}

@@ -1,7 +1,7 @@
 import volunteerImage from '../images/volunteer.jpg';
 import { useState } from 'react'
 
-export default function EffortsCard({ effort, displayMode, onVolunteerSignup, readOnly = false }) {
+export default function EffortsCard({ effort, displayMode, onVolunteerSignup, readOnly = false, noSignUp = false }) {
 
   const [isVolunteering, setIsVolunteering] = useState(false);
 
@@ -40,7 +40,7 @@ export default function EffortsCard({ effort, displayMode, onVolunteerSignup, re
         <p>Location: {effort.location.address}<br />{effort.location.city}, {effort.location.state} {effort.location.zip}</p>
         <p className='card-description-info'>Description: {effort.description}</p>
       </div>
-      <div className='effort-card-signup'>
+      {noSignUp ? (<span className='myEfforts-text'>You Created This Effort</span>) : (<div className='effort-card-signup'>
         <h1>Sign Up</h1>
         {!readOnly && (
           <button
@@ -64,7 +64,8 @@ export default function EffortsCard({ effort, displayMode, onVolunteerSignup, re
         <p className='volunteer-count'>{effort.volunteerCount} {effort.volunteerCount > 1 ? 'volunteers already' : 'volunteer already'}</p>
         {effort.openEffort && (
           <button className='signup-button'>As Reliant</button>)}
-      </div>
+      </div>)}
+
     </div>
   );
 }

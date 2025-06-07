@@ -11,6 +11,7 @@ function App() {
 
   const [efforts, setEfforts] = useState([]);
   const [registeredEffortIds, setRegisteredEffortIds] = useState([]);
+  const [createdEffortIds, setCreatedEffortIds] = useState([]);
 
   const handleVolunteerToggle = (id, isVolunteering) => {
     setEfforts((prevEfforts) =>
@@ -43,11 +44,12 @@ function App() {
         <Routes>
           <Route path='/' element={<EffortsDashboard efforts={efforts} setEfforts={setEfforts} onVolunteerToggle={handleVolunteerToggle}
             registeredEffortIds={registeredEffortIds} />} />
-          <Route path='/newEffort' element={<AddNewEffort efforts={efforts} setEfforts={setEfforts} />} />
+          <Route path='/newEffort' element={<AddNewEffort efforts={efforts} setEfforts={setEfforts} setCreatedEffortIds={setCreatedEffortIds}
+          />} />
           <Route path="/upcoming" element={<UpcomingEfforts efforts={efforts.filter((effort) =>
             registeredEffortIds.includes(effort.id)
           )} onVolunteerToggle={handleVolunteerToggle} />} />
-          <Route path="/my-efforts" element={<MyEfforts />} />
+          <Route path="/my-efforts" element={<MyEfforts efforts={efforts.filter((effort) => createdEffortIds.includes(effort.id))} />} />
           <Route path="/about" element={<About />} />
         </Routes>
       </Router >

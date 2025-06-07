@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import parseLocation from '../parseLocation';
 
-export default function AddEffortForm({ efforts, setEfforts }) {
+export default function AddEffortForm({ efforts, setEfforts, setCreatedEffortIds }) {
   const nav = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -56,6 +56,7 @@ export default function AddEffortForm({ efforts, setEfforts }) {
     };
 
     setEfforts([...efforts, newEffort]);
+    setCreatedEffortIds((prev) => [...prev, newEffort.id]);
     nav('/');
   };
 
