@@ -4,24 +4,9 @@ import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import SearchBar from './SearchBar';
 
-export default function EffortsDashboard({ efforts, setEfforts }) {
+export default function EffortsDashboard({ efforts, setEfforts, onVolunteerToggle, registeredEffortIds }) {
   const [search, setSearch] = useState('');
   const [displayMode, setDisplayMode] = useState('card');
-
-  const handleVolunteerToggle = (id, isVolunteering) => {
-    setEfforts((prevEfforts) =>
-      prevEfforts.map((effort) =>
-        effort.id === id
-          ? {
-            ...effort,
-            volunteerCount: isVolunteering
-              ? effort.volunteerCount + 1
-              : Math.max(effort.volunteerCount - 1, 0),
-          }
-          : effort
-      )
-    );
-  };
 
   const filteredEfforts = efforts.filter((effort) => {
     return (
@@ -47,7 +32,7 @@ export default function EffortsDashboard({ efforts, setEfforts }) {
       {filteredEfforts.map((effort) =>
         <EffortsCard key={effort.id} effort={effort}
           displayMode={displayMode}
-          onVolunteerSignup={handleVolunteerToggle} />
+          onVolunteerSignup={onVolunteerToggle} />
       )}
     </div>
   );

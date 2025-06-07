@@ -1,11 +1,13 @@
 import volunteerImage from '../images/volunteer.jpg';
 import { useState } from 'react'
 
-export default function EffortsCard({ effort, displayMode, onVolunteerSignup }) {
+export default function EffortsCard({ effort, displayMode, onVolunteerSignup, readOnly = false }) {
 
   const [isVolunteering, setIsVolunteering] = useState(false);
 
   const handleClick = () => {
+    if (readOnly) return;
+
     onVolunteerSignup(effort.id, !isVolunteering);
     setIsVolunteering((prev) => !prev);
   };
@@ -40,7 +42,25 @@ export default function EffortsCard({ effort, displayMode, onVolunteerSignup }) 
       </div>
       <div className='effort-card-signup'>
         <h1>Sign Up</h1>
-        <button className={`signup-button ${isVolunteering ? 'active' : ''}`} onClick={handleClick}>{isVolunteering ? 'Unregister' : 'As Volunteer'}</button>
+        {!readOnly && (
+          <button
+            className={`signup-button ${isVolunteering ? 'active' : ''}`}
+            onClick={handleClick}
+          >
+            {isVolunteering ? 'Unregister' : 'As Volunteer'}
+          </button>
+        )}
+        {readOnly && (
+          <button
+            className="signup-button active"
+            onClick={() => {
+              onVolunteerSignup(effort.id, false);
+              setIsVolunteering(false);
+            }}
+          >
+            Unregister
+          </button>
+        )}
         <p className='volunteer-count'>{effort.volunteerCount} {effort.volunteerCount > 1 ? 'volunteers already' : 'volunteer already'}</p>
         {effort.openEffort && (
           <button className='signup-button'>As Reliant</button>)}
