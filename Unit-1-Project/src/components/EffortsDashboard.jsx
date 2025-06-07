@@ -8,11 +8,16 @@ export default function EffortsDashboard({ efforts, setEfforts }) {
   const [search, setSearch] = useState('');
   const [displayMode, setDisplayMode] = useState('card');
 
-  const handleVolunteerSignup = (id) => {
+  const handleVolunteerToggle = (id, isVolunteering) => {
     setEfforts((prevEfforts) =>
       prevEfforts.map((effort) =>
         effort.id === id
-          ? { ...effort, volunteerCount: effort.volunteerCount + 1 }
+          ? {
+            ...effort,
+            volunteerCount: isVolunteering
+              ? effort.volunteerCount + 1
+              : Math.max(effort.volunteerCount - 1, 0),
+          }
           : effort
       )
     );
@@ -42,7 +47,7 @@ export default function EffortsDashboard({ efforts, setEfforts }) {
       {filteredEfforts.map((effort) =>
         <EffortsCard key={effort.id} effort={effort}
           displayMode={displayMode}
-          onVolunteerSignup={handleVolunteerSignup} />
+          onVolunteerSignup={handleVolunteerToggle} />
       )}
     </div>
   );
