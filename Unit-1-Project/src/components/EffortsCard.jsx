@@ -21,7 +21,6 @@ export default function EffortsCard({ effort, displayMode, onVolunteerSignup }) 
           {effort.openEffort && (
             <button className="signup-button small">Reliant</button>
           )}
-          <button className="signup-button small">Reliant</button>
         </div>
       </div>
     );
