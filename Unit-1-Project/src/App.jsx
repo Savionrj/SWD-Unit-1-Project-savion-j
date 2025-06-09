@@ -6,6 +6,7 @@ import UpcomingEfforts from './components/UpcomingEfforts'
 import MyEfforts from './components/MyEfforts'
 import About from './components/About'
 import './App.css'
+import Footer from './components/Footer';
 
 function App() {
 
@@ -53,6 +54,7 @@ function App() {
           <Route path="/about" element={<About />} />
         </Routes>
       </Router >
+      <Footer />
     </>
   )
 }
