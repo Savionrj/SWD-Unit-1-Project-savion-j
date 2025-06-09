@@ -18,6 +18,7 @@ export default function AddEffortForm({ efforts, setEfforts, setCreatedEffortIds
     tags: ''
   });
 
+  //This will automatically update the form state when a user types into the form's inputs
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData((prev) => ({
@@ -26,6 +27,7 @@ export default function AddEffortForm({ efforts, setEfforts, setCreatedEffortIds
     }));
   };
 
+  //Creates a new effort object using form data state object
   const handleSubmit = (e) => {
     e.preventDefault();
 
