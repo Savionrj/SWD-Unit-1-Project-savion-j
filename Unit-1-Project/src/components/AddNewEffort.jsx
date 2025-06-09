@@ -35,11 +35,21 @@ export default function AddEffortForm({ efforts, setEfforts, setCreatedEffortIds
       return;
     }
 
+    function formatDate(inputDate) {
+      const formattedDate = new Date(inputDate);
+      return formattedDate.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+    }
+
+
     const newEffort = {
       id: efforts.length + 1,
       title: formData.title,
       time: {
-        date: formData.date,
+        date: formatDate(formData.date),
         startTime: formData.startTime,
         endTime: formData.endTime || null
       },
