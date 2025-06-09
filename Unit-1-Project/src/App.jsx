@@ -49,7 +49,7 @@ function App() {
           <Route path="/upcoming" element={<UpcomingEfforts efforts={efforts.filter((effort) =>
             registeredEffortIds.includes(effort.id)
           )} onVolunteerToggle={handleVolunteerToggle} />} />
-          <Route path="/my-efforts" element={<MyEfforts efforts={efforts.filter((effort) => createdEffortIds.includes(effort.id))} />} />
+          <Route path="/my-efforts" element={<MyEfforts efforts={efforts.filter((effort) => createdEffortIds.includes(effort.id))} setEfforts={setEfforts} setCreatedEffortIds={setCreatedEffortIds} />} />
           <Route path="/about" element={<About />} />
         </Routes>
       </Router >
