@@ -275,7 +275,6 @@ textarea {
   margin-top: 1rem;
 }
 
-/* Medium devices (tablets, 768px and up) */
 @media (max-width: 1024px) {
   .effort-card {
     flex-direction: column;
@@ -308,7 +307,6 @@ textarea {
   }
 }
 
-/* Small devices (phones, 600px and down) */
 @media (max-width: 600px) {
   #root {
     padding: 1rem;
